@@ -26,6 +26,8 @@ RUN apt-get update; apt-get install zip netcat -y; \
     pip install awscli; \
     rm -f get-pip.py
 
+RUN echo 'America/Chicago' >/etc/timezone
+
 RUN mkdir ${PENTAHO_HOME}; useradd -s /bin/bash -d ${PENTAHO_HOME} pentaho; chown pentaho:pentaho ${PENTAHO_HOME}
 
 USER pentaho
@@ -39,6 +41,7 @@ RUN /usr/bin/wget --progress=dot:giga http://downloads.sourceforge.net/project/p
 
 COPY config $PENTAHO_HOME/config
 COPY scripts $PENTAHO_HOME/scripts
+COPY libs $PENTAHO_HOME/libs
 
 WORKDIR /opt/pentaho 
 EXPOSE 8080 

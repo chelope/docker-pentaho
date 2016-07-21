@@ -1,0 +1,8 @@
+version: '2'
+services:
+  pentaho:
+    image: qualifacts/pentaho:6.1
+    ports:
+     - "8080:8080"
+    volumes:
+     - /opt/pentaho/repository:/opt/pentaho/biserver-ce/pentaho-solutions/system/jackrabbit/repository

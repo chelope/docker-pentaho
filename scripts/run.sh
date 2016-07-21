@@ -16,4 +16,8 @@ if [ -f "./custom_script.sh" ]; then
    mv ./custom_script.sh ./custom_script.sh.bkp
 fi
 
+cp /opt/pentaho/libs/*.jar $PENTAHO_HOME/biserver-ce/tomcat/lib
+sed -i "s/requestParameterAuthenticationEnabled=false/requestParameterAuthenticationEnabled=true/" $PENTAHO_HOME/biserver-ce/pentaho-solutions/system/security.properties
+
+
 sh $PENTAHO_HOME/biserver-ce/start-pentaho.sh
